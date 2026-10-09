@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>JUNGLE RUSH</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b1a0f"><link rel="icon" href="assets/ui/icon-192.png">
+<style>
+:root{--bg:#0b1a0f;--gold:#ffd23f;--card:rgba(10,30,15,.82);--tx:#f3f8e8;box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:system-ui,sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
+#hud{position:fixed;left:0;right:0;top:0;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 0;display:none;justify-content:space-between;align-items:flex-start;pointer-events:none;text-shadow:0 2px 4px #000}
+#hud b{font-size:30px;color:var(--gold);display:block}#hud small{font-size:14px;opacity:.9}
+#pw{position:fixed;left:14px;top:calc(env(safe-area-inset-top,0px) + 78px);font-size:15px;pointer-events:none;text-shadow:0 2px 4px #000}
+#pb{pointer-events:auto;background:var(--card);border:2px solid var(--gold);color:var(--tx);width:44px;height:44px;border-radius:12px;font-size:20px}
+.ov{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(5,20,8,.55);padding:env(safe-area-inset-top,0px) 20px env(safe-area-inset-bottom,0px);text-align:center}
+.ov.on{display:flex}
+h1{font-size:44px;margin:0;letter-spacing:3px;color:var(--gold);text-shadow:0 4px 0 #5a3b00,0 0 24px #7fff5a;animation:f 2.4s ease-in-out infinite}
+@keyframes f{50%{transform:translateY(-6px) scale(1.04)}}
+h2{margin:0;font-size:32px;color:var(--gold)}
+.btn{min-width:220px;padding:14px 20px;font-size:20px;font-weight:700;border-radius:16px;border:2px solid #fff3;background:linear-gradient(#4fae3a,#2a7a22);color:#fff;box-shadow:0 4px 0 #14430f}
+.btn.s{background:linear-gradient(#8a6b2a,#5e4519);box-shadow:0 4px 0 #2e200a}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.st{background:var(--card);padding:10px 18px;border-radius:14px;line-height:1.6}
+#err{padding:20px}
+</style></head><body>
+<div id="hud"><div><b id="sc">0</b><small id="di">0 m</small></div><div style="text-align:right"><b id="co">🪙 0</b><button id="pb">❚❚</button></div></div>
+<div id="pw"></div>
+<div class="ov on" id="menu"><h1>JUNGLE<br>RUSH</h1>
+<div class="st">Best score: <b id="mb">0</b><br>Total coins: <b id="mc">0</b></div>
+<div class="st" id="ms" style="font-size:15px;text-align:left"></div><button class="btn" id="play">▶ PLAY</button>
+<button class="btn s" id="snd">🔊 Sound: on</button>
+<button class="btn s" id="rst">Reset progress</button>
+<small>Swipe ◀ ▶ lanes · ▲ jump · ▼ slide<br>Keys: arrows/WASD, P pause</small></div>
+<div class="ov" id="pause"><h2>PAUSED</h2><button class="btn" id="res">Resume</button><button class="btn s" id="rs2">Restart</button><button class="btn s" id="mn1">Main menu</button></div>
+<div class="ov" id="over"><h2>GAME OVER</h2><div class="st" id="ovs"></div><button class="btn" id="again">Play again</button><button class="btn s" id="mn2">Main menu</button></div>
+<div class="ov" id="err"><h2>WebGL / Three.js unavailable</h2><p>This game needs WebGL and a first load with internet access to fetch Three.js. Reload to retry.</p><button class="btn" onclick="location.reload()">Retry</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/main.js"></script></body></html>
